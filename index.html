@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya Shah</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #e9f0f9;
+            position: relative;
+        }
+
+        #hero .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100%;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+        
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #0052a3;
+            text-decoration: none;
+        }
+        
+        .hero-image {
+            position: relative; /* Change from absolute */
+            right: auto;
+            top: auto;
+            transform: none;
+            width: 400px;
+            height: 400px;
+            background-color: #ddd;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* About Section */
+        #about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 400px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #111;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #0066cc;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Skills Section */
+        #skills {
+            background-color: #f5f5f5;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .skill-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+        
+        .skill-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+        
+        /* Experience Section */
+        #experience {
+            background-color: white;
+            position: relative;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto 0;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #0066cc;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid #0066cc;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -13px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -13px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-date {
+            color: #0066cc;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .timeline-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #111;
+        }
+        
+        .timeline-company {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Education Section */
+        #education {
+            background-color: #e9f0f9;
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .education-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .education-date {
+            color: #0066cc;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .education-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #111;
+        }
+        
+        .education-institution {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Portfolio Section */
+        #portfolio {
+            background-color: white;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .portfolio-info {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .portfolio-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+        
+        .portfolio-category {
+            color: #0066cc;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-button:hover {
+            background-color: #0052a3;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: #0066cc;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #777;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-image {
+                position: relative;
+                right: auto;
+                top: auto;
+                transform: none;
+                margin: 40px auto 0;
+            }
+            
+            #hero {
+                height: auto;
+                padding: 140px 0 60px;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd)::after {
+                left: 18px;
+            }
+            
+            .timeline-item:nth-child(even)::after {
+                left: 18px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            
+            .hero-image {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Divya Shah</div>
+                <div class="nav-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <!-- <a href="#contact">Contact</a> -->
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hello, I'm <span style="color: #0066cc;">Divya Shah</span></h1>
+                <p>I'm a Full Stack Developer/Devops/ML/Tech Enthusiast specializing in creating exceptional work and automating things.<br>Welcome to my portfolio.</p>
+                <a href="#contact" class="cta-button">Get In Touch</a>
+            </div>
+            <div class="hero-image">
+                <img src="DivyaShah.jpg" alt="Your Profile Picture">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="section-subtitle">About Me</p>
+                    <h2 class="section-title">Who I Am</h2>
+                    <p>I'm a passionate Developer with 1.5 years of full time experience, eager to learn and perform the best. I have learned App Development, Web Development, DevOps, AI and ML.</p>
+                    <p>My approach is centered around trying to make things work to its best level.</p>
+                    <p>When I'm not working, you can find me reading non fiction, watching movies, walking and listening music.</p>
+                    <!-- <div style="margin-top: 30px;">
+                        <a href="#contact" class="cta-button">Contact Me</a>
+                    </div> -->
+                </div>
+                <div class="about-image">
+                    <img src="AboutMe.jpg" alt="About Me Image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <p class="section-subtitle">My Expertise</p>
+            <h2 class="section-title">Skills & Capabilities</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="skill-title">Full-Stack Development</h3>
+                    <ul>
+                        <li>Frontend: Angular, Android development</li>
+                        <li>Backend: Java, Django, NodeJS, FastAPI</li>
+                        <li>Experience building complete applications from UI to backend services</li>
+                        <li>Experience with MySQL, SQLite, and Firebase</li>
+                    </ul>
+                    <p></p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3 class="skill-title">DevOps & Infrastructure</h3>
+                    <ul>
+                        <li>CI/CD pipeline creation and optimization in Teamcity    </li>
+                        <li>Migration experience (GCP to Azure, OCP 3 to OCP 4)</li>
+                        <li>Performance optimization of web applications and implementing helm charts</li>
+                    </ul>    
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📱</div>
+                    <h3 class="skill-title">Machine Learning & AI</h3>
+                    <ul>
+                        <li>Built recommendation systems (hotels, activities, flights)</li>
+                        <li>Developed a Raga Identification System using RNN-LSTM</li>
+                    </ul> 
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">📊</div>
+                    <h3 class="skill-title">Leadership & Project Management</h3>
+                    <ul>
+                        <li>Led technical teams for college fest development</li>
+                        <li>Coordinated major events as Technical Head</li>
+                        <li>Experience in the Training and Placement Cell</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <p class="section-subtitle">My Journey</p>
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">July 2023 - Present</span>
+                        <h3 class="timeline-title">Senior Technical Analyst</h3>
+                        <span class="timeline-company">Deutsche Bank, Pune</span>
+                        <p>Deutsche Bank AG is a German multinational investment bank and financial services company headquartered in Frankfurt, Germany, and dual-listed on the Frankfurt Stock Exchange and the New York Stock Exchange.</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Developed and deployed a portal to measure SLOs for availability and latency metrics using Angular, Java, and Newrelic</li>
+                            <li>Implemented HTTPS authentication & Fixed bugs and migrated infrastructure from OCP 3 to OCP 4</li>
+                            <li>Created CI/CD pipelines and improved web page loading performance along with setting up helm charts</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Aug 2022 - Jun 2023</span>
+                        <h3 class="timeline-title">Junior Machine Learning and Backend Engineer</h3>
+                        <span class="timeline-company">Rivi, Remote</span>
+                        <p>An AI first Travel Company</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Exposed key recommendation services as a third party API to consumers via FastAPI</li>
+                            <li>Migration of Infrastructure from GCP to Azure</li>
+                            <li>Hosting Services via CI/CD on domain</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2022 - Jul 2022</span>
+                        <h3 class="timeline-title">Technology Intern</h3>
+                        <span class="timeline-company">Deutsche Bank, Pune</span>
+                        <p>Deutsche Bank AG is a German multinational investment bank and financial services company headquartered in Frankfurt, Germany, and dual-listed on the Frankfurt Stock Exchange and the New York Stock Exchange.</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Fixed OSS vulnerabilities and some bugs</li>
+                            <li>Created a Chatbot to translate from one language to other</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Jan 2022 - May 2022</span>
+                        <h3 class="timeline-title">Machine Learning Intern</h3>
+                        <span class="timeline-company">Rivi, Remote</span>
+                        <p>An AI first Travel Company</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Improved multiple recommendation systems (hotels, activities, flights)</li>
+                            <li>Developed user activity tracking APIs for a fitness app using Django and SQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-date">Aug 2020 - Oct 2020</span>
+                        <h3 class="timeline-title">Android Developer Intern</h3>
+                        <span class="timeline-company">Smowcode, Remote</span>
+                        <p>Smowcode is an 10x faster advanced visual coding language for ESP32 micro-controllers for Industrial IoT applications.</p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Implemented Core UI elements of Application</li>
+                            <li>Developed Bluetooth communication functionality between ESP32 devices and mobile phones</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <p class="section-subtitle">Academic Background</p>
+            <h2 class="section-title">Education & Certifications</h2>
+            <div class="education-grid">
+                <div class="education-card">
+                    <span class="education-date">2019 - 2023</span>
+                    <h3 class="education-title">Computer Science Engineer (BTech)</h3>
+                    <span class="education-institution">Sardar Patel Institute of Technology, Mumbai</span>
+                    <p>Completed BTech with a CGPA of <b>9.57</b></p>
+                    <p style="margin-top: 10px;"><strong>Relevant Coursework:</strong> Web Development, DBMS, Data Structures</p>
+                </div>
+                <div class="education-card">
+                    <span class="education-date">2017 - 2019</span>
+                    <h3 class="education-title">HSC</h3>
+                    <span class="education-institution">Pace Junior Science College</span>
+                    <p>Completed HSC with <b>89.23%</b></p>
+                </div>
+                <div class="education-card">
+                    <span class="education-date">2017</span>
+                    <h3 class="education-title">10th ICSE Examinations</h3>
+                    <span class="education-institution">Children's Academy, Mumbai</span>
+                    <p>Completed ICSE Examinations with <b>97%</b></p>
+                </div>
+                <div class="education-card">
+                    <span class="education-date">2024</span>
+                    <h3 class="education-title">Associate Cloud Engineer Certification</h3>
+                    <span class="education-institution">Google Cloud</span>
+                    <p>Associate Cloud Engineers deploy applications, monitor operations, and manage enterprise solutions. They use Google Cloud Console and the command-line interface to perform common platform-based tasks to maintain one or more deployed solutions that leverage Google-managed or self-managed services on Google Cloud.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio">
+        <div class="container">
+            <p class="section-subtitle">My Work</p>
+            <h2 class="section-title">Recent Projects</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <!-- <div class="portfolio-image">
+                        <img src="/api/placeholder/400/300" alt="Project 1">
+                    </div> -->
+                    <div class="portfolio-info">
+                        <!-- <p class="portfolio-category">Category</p> -->
+                        <h3 class="portfolio-title">Raga Identification System</h3>
+                        <p>An app to identify different Indian Classical Music Raga’s.</p>
+                        <a href="https://github.com/Divya-127/Raga-Identifier" style="margin-top: 10px; display: inline-block;">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <!-- <div class="portfolio-image">
+                        <img src="/api/placeholder/400/300" alt="Project 2">
+                    </div> -->
+                    <div class="portfolio-info">
+                        <!-- <p class="portfolio-category">Category</p> -->
+                        <h3 class="portfolio-title">Fundamental Analyis of Stocks</h3>
+                        <p>Developed an app to analyze stocks based on their fundamentals using machine learning. The stocks picked by the model gave 9.8% return in a period of 3 months.</p>
+                        <a href="https://github.com/Divya-127/FunStock" style="margin-top: 10px; display: inline-block;">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <!-- <div class="portfolio-image">
+                        <img src="/api/placeholder/400/300" alt="Project 3">
+                    </div> -->
+                    <div class="portfolio-info">
+                        <!-- <p class="portfolio-category">Category</p> -->
+                        <h3 class="portfolio-title">Space Invaders</h3>
+                        <p>A python game application which involves a player fighting an alien attack with varying levels of difficulty</p>
+                        <a href="https://github.com/Divya-127/SpaceInvaders" style="margin-top: 10px; display: inline-block;">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <!-- <div class="portfolio-image">
+                        <img src="/api/placeholder/400/300" alt="Project 3">
+                    </div> -->
+                    <div class="portfolio-info">
+                        <!-- <p class="portfolio-category">Category</p> -->
+                        <h3 class="portfolio-title">Insperon</h3>
+                        <p>An Android Chatbot which on hearing user commands performs activities ranging from opening apps, making calls, searching the web, writing an email.</p>
+                        <a href="https://github.com/Divya-127/Chatbot" style="margin-top: 10px; display: inline-block;">View Project</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!-- <section id="contact">
+        <div class="container">
+            <p class="section-subtitle">Get In Touch</p>
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Subject">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Message</button>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Divya Shah</h3>
+                    <p>A passionate Developer dedicated to creating highest level of work.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Divya-127" class="social-icon" target="_blank">
+                            <svg viewBox="0 0 24 24" class="github-icon">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/divya-shah-44008b1a5/" class="social-icon" target="_blank">
+                            <svg viewBox="0 0 24 24" class="linkedin-icon">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                        <!-- <a href="#" class="social-icon">L</a>
+                        <a href="#" class="social-icon">I</a> -->
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <!-- <a href="#contact">Contact</a> -->
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Email: shahdivya127@gmail.com</p>
+                    <p>Phone: +91 9967180209</p>
+                    <p>Location: Mumbai, India</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Divya Shah. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
